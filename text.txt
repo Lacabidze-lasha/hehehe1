@@ -1,0 +1,63 @@
+x = int(input('Enter an integer: '))
+
+n = abs(x)
+i = 0
+
+while i * i * i < n:
+    i = i + 1
+
+if i * i * i == n:
+    if x < 0:
+        i = -i
+    print('Cube root of', x, 'is', i)
+else:
+    print(x, 'is not a perfect cube')
+
+
+
+def to_binary(num):
+    if num == 0:
+        return '0'
+
+    negative = False
+
+    if num < 0:
+        negative = True
+        num = abs(num)
+
+    result = ''
+
+    while num > 0:
+        bit = num % 2
+        result = str(bit) + result
+        num = num // 2
+
+    if negative:
+        result = '-' + result
+
+    return result
+
+
+
+
+def get_data(aTuple):
+    nums = ()
+    words = ()
+
+    for t in aTuple:
+        nums = nums + (t[0],)
+
+        if t[1] not in words:
+            words = words + (t[1],)
+
+    smallest = nums[0]
+    largest = nums[0]
+
+    for n in nums:
+        if n < smallest:
+            smallest = n
+
+        if n > largest:
+            largest = n
+
+    return (smallest, largest, len(words))
